@@ -16,11 +16,11 @@ html {
   display: flex;
   flex-direction: column;
   height: calc(100vh - 64px - 64px);
-}
 
-.main-content.center {
-  align-items: center;
-  justify-content: center;
+  &.center {
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .main-footer {
@@ -28,4 +28,8 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.main-icon {
+  margin-right: 15px;
 }

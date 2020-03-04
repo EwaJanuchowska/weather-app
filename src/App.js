@@ -9,10 +9,13 @@ import {
   Box
 } from "@material-ui/core";
 
+import { WbSunny } from "@material-ui/icons";
+
 const App = () => (
   <>
     <AppBar position="static">
       <Toolbar>
+        <WbSunny className="main-icon" />
         <Typography variant="h5">Weather app</Typography>
       </Toolbar>
     </AppBar>
