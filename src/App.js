@@ -5,7 +5,8 @@ import {
   Typography,
   Grid,
   Paper,
-  Container
+  Container,
+  Box
 } from "@material-ui/core";
 
 const App = () => (
@@ -20,16 +21,25 @@ const App = () => (
       <Container>
         <Grid container>
           <Grid item xs={12}>
-            <Paper square className="paper">
-              
-            </Paper>
+            <Box
+              textAlign="center"
+              fontSize="h5.fontSize"
+              fontFamily="h6.fontFamily"
+              lineHeight={2}
+            >
+              Search for your city/region to check the weather
+            </Box>
+
+            <Paper square className="paper"></Paper>
           </Grid>
         </Grid>
       </Container>
     </main>
 
     <footer className="main-footer">
-      &copy; 2020 Weather App
+      <Box textAlign="center" fontFamily="h6.fontFamily" fontSize={12}>
+        &copy; 2020 Weather App
+      </Box>
     </footer>
   </>
 );
