@@ -8,8 +8,8 @@ import {
   Container,
   Box
 } from "@material-ui/core";
-
 import { WbSunny } from "@material-ui/icons";
+import WeatherSymbol from "./components/WeatherSymbol";
 
 const App = () => (
   <>
@@ -32,6 +32,19 @@ const App = () => (
             >
               Search for your city/region to check the weather
             </Box>
+            Symbols:
+            <WeatherSymbol type="hot" />
+            <WeatherSymbol type="clear" />
+            <WeatherSymbol type="partlyCloudy" />
+            <WeatherSymbol type="windy" />
+            <WeatherSymbol type="snow" />
+            <WeatherSymbol type="cloudy" />
+            <WeatherSymbol type="scatteredSnow" />
+            <WeatherSymbol type="thunderstorms" />
+            <WeatherSymbol type="thunderstormsWithRain" />
+            <WeatherSymbol type="showers" />
+            <WeatherSymbol type="drizzle" />
+            <WeatherSymbol type="rainWithSun" />
 
             <Paper square className="paper"></Paper>
           </Grid>
