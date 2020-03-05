@@ -1,26 +1,14 @@
 import React from "react";
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Grid,
-  Paper,
-  Container,
-  Box
-} from "@material-ui/core";
-import { WbSunny } from "@material-ui/icons";
+import { Grid, Paper, Container, Box } from "@material-ui/core";
 import WeatherSymbol from "./components/WeatherSymbol";
+import Header from "./components/Header";
+import MainContent from "./components/MainContent";
 
 const App = () => (
   <>
-    <AppBar position="static">
-      <Toolbar>
-        <WbSunny className="main-icon" />
-        <Typography variant="h5">Weather app</Typography>
-      </Toolbar>
-    </AppBar>
+    <Header />
 
-    <main className="main-content center">
+    <MainContent center>
       <Container>
         <Grid container>
           <Grid item xs={12}>
@@ -32,7 +20,7 @@ const App = () => (
             >
               Search for your city/region to check the weather
             </Box>
-            Symbols:
+            <Box>
             <WeatherSymbol type="hot" />
             <WeatherSymbol type="clear" />
             <WeatherSymbol type="partlyCloudy" />
@@ -45,18 +33,12 @@ const App = () => (
             <WeatherSymbol type="showers" />
             <WeatherSymbol type="drizzle" />
             <WeatherSymbol type="rainWithSun" />
-
+            </Box>
             <Paper square className="paper"></Paper>
           </Grid>
         </Grid>
       </Container>
-    </main>
-
-    <footer className="main-footer">
-      <Box textAlign="center" fontFamily="h6.fontFamily" fontSize={12}>
-        &copy; 2020 Weather App
-      </Box>
-    </footer>
+    </MainContent>
   </>
 );
 

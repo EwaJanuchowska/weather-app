@@ -1,0 +1,10 @@
+.MainContent {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 64px - 64px);
+
+  &.center {
+    align-items: center;
+    justify-content: center;
+  }
+}
