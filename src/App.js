@@ -21,19 +21,115 @@ const App = () => (
             >
               Search for your city/region to check the weather
             </Box>
-            <Box style={{display: 'flex', flexWrap: 'wrap'}}>
-              <WeatherInfoTile weatherType="hot" />
-              <WeatherInfoTile weatherType="clear" />
-              <WeatherInfoTile weatherType="partlyCloudy" />
-              <WeatherInfoTile weatherType="windy" />
-              <WeatherInfoTile weatherType="snow" />
-              <WeatherInfoTile weatherType="cloudy" />
-              <WeatherInfoTile weatherType="scatteredSnow" />
-              <WeatherInfoTile weatherType="thunderstorms" />
-              <WeatherInfoTile weatherType="thunderstormsWithRain" />
-              <WeatherInfoTile weatherType="showers" />
-              <WeatherInfoTile weatherType="drizzle" />
-              <WeatherInfoTile weatherType="rainWithSun" />
+            <Box style={{ display: "flex", flexWrap: "wrap" }}>
+              <WeatherInfoTile
+                weatherType="hot"
+                temperatureDay={23}
+                temperatureNight={7}
+                precipProbability={30}
+                humidity={30}
+                windSpeed={12}
+                date={1509944400}
+              />
+              <WeatherInfoTile
+                weatherType="clear"
+                temperatureDay={23}
+                temperatureNight={7}
+                precipProbability={30}
+                humidity={30}
+                windSpeed={12}
+                date={1583448957542}
+              />
+              <WeatherInfoTile
+                weatherType="partlyCloudy"
+                temperatureDay={23}
+                temperatureNight={7}
+                precipProbability={30}
+                humidity={30}
+                windSpeed={12}
+                date={1583448957542}
+              />
+              <WeatherInfoTile
+                weatherType="windy"
+                temperatureDay={23}
+                temperatureNight={7}
+                precipProbability={30}
+                humidity={30}
+                windSpeed={12}
+                date={1583448957542}
+              />
+              <WeatherInfoTile
+                weatherType="snow"
+                temperatureDay={23}
+                temperatureNight={7}
+                precipProbability={30}
+                humidity={30}
+                windSpeed={12}
+                date={1583448957542}
+              />
+              <WeatherInfoTile
+                weatherType="cloudy"
+                temperatureDay={23}
+                temperatureNight={7}
+                precipProbability={30}
+                humidity={30}
+                windSpeed={12}
+                date={1583448957542}
+              />
+              <WeatherInfoTile
+                weatherType="scatteredSnow"
+                temperatureDay={23}
+                temperatureNight={7}
+                precipProbability={30}
+                humidity={30}
+                windSpeed={12}
+                date={1583448957542}
+              />
+              <WeatherInfoTile
+                weatherType="thunderstorms"
+                temperatureDay={23}
+                temperatureNight={7}
+                precipProbability={30}
+                humidity={30}
+                windSpeed={12}
+                date={1583448957542}
+              />
+              <WeatherInfoTile
+                weatherType="thunderstormsWithRain"
+                temperatureDay={23}
+                temperatureNight={7}
+                precipProbability={30}
+                humidity={30}
+                windSpeed={12}
+                date={1583448957542}
+              />
+              <WeatherInfoTile
+                weatherType="showers"
+                temperatureDay={23}
+                temperatureNight={7}
+                precipProbability={30}
+                humidity={30}
+                windSpeed={12}
+                date={1583448957542}
+              />
+              <WeatherInfoTile
+                weatherType="drizzle"
+                temperatureDay={23}
+                temperatureNight={7}
+                precipProbability={30}
+                humidity={30}
+                windSpeed={12}
+                date={1583448957542}
+              />
+              <WeatherInfoTile
+                weatherType="rainWithSun"
+                temperatureDay={23}
+                temperatureNight={7}
+                precipProbability={30}
+                humidity={30}
+                windSpeed={12}
+                date={1583448957542}
+              />
             </Box>
             <Paper square className="paper"></Paper>
           </Grid>

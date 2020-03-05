@@ -1,40 +1,51 @@
 import React from "react";
 import { Paper } from "@material-ui/core";
-import WeatherSymbol from "../WeatherSymbol";
 import Emoji from "a11y-react-emoji";
+import formatUnixDate from "../../utils/formatUnixDate";
+import WeatherSymbol from "../WeatherSymbol";
 
 import "./WeatherInfoTile.scss";
 
-const WeatherInfoTile = ({ weatherType, temperature }) => (
+const WeatherInfoTile = ({
+  weatherType,
+  temperatureDay,
+  temperatureNight,
+  precipProbability,
+  humidity,
+  windSpeed,
+  date
+}) => (
   <Paper square elevation={2} className="WeatherInfoTile">
-    <div class="date-time">
-      <div>czw.</div>
-      <div>5.03</div>
-    </div>
+    {date && (
+      <div className="date-time">
+        <div>{formatUnixDate(date, "iii")}</div>
+        <div>{formatUnixDate(date, "dd.MM")}</div>
+      </div>
+    )}
 
     <WeatherSymbol className="weather-symbol" type={weatherType} />
 
-    <div class="temperature">
-      <div class="day">23&deg;</div>
-      <div class="night">9&deg;</div>
+    <div className="temperature">
+      <div className="day">{temperatureDay}&deg;</div>
+      <div className="night">{temperatureNight}&deg;</div>
     </div>
 
-    <div class="summary">
-      <div class="summary-item">
+    <div className="summary">
+      <div className="summary-item">
         <Emoji
           className="summary-item-icon"
           symbol="☔️"
           label="Szansa opadów"
         />
-        8%
+        {precipProbability}%
       </div>
-      <div class="summary-item">
+      <div className="summary-item">
         <Emoji className="summary-item-icon" symbol="💧" label="Wilgotność" />
-        56%
+        {humidity}%
       </div>
-      <div class="summary-item">
+      <div className="summary-item">
         <Emoji className="summary-item-icon" symbol="💨" label="Wiatr" />
-        100%
+        {windSpeed}&nbsp;km/h
       </div>
     </div>
   </Paper>
