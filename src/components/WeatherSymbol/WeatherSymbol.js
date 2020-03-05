@@ -3,7 +3,7 @@ import Emoji from "a11y-react-emoji";
 
 import "./WeatherSymbol.scss";
 
-const WeatherSymbol = ({ type }) => {
+const WeatherSymbol = ({ type, className }) => {
   const symbolsMap = {
     hot: "🌡",
     clear: "☀️",
@@ -21,7 +21,7 @@ const WeatherSymbol = ({ type }) => {
 
   return (
     <Emoji
-      className="WeatherSymbol"
+      className={`WeatherSymbol ${className}`}
       symbol={symbolsMap[type]}
       label={Object.keys(symbolsMap[type])}
     />

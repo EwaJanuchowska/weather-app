@@ -1,0 +1,53 @@
+.WeatherInfoTile {
+  width: 100px;
+  height: 250px;
+  padding: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .weather-symbol {
+    margin: 10px 0;
+  }
+
+  .date-time {
+    font-weight: 400;
+    text-align: center;
+    opacity: 0.7;
+    line-height: 1.3;
+  }
+
+  .temperature {
+    display: flex;
+    font-weight: 500;
+
+    .day {
+      margin-right: 10px;
+    }
+
+    .night {
+      opacity: 0.4;
+    }
+  }
+
+  .summary {
+    display: flex;
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #e6e6e6;
+
+    .summary-item {
+      color: #c0c0c0;
+      text-align: center;
+      font-size: 10px;
+
+      .summary-item-icon {
+        color: transparent;
+        text-shadow: 0 0 0 #c0c0c0;
+        font-size: 16px;
+      }
+    }
+  }
+}

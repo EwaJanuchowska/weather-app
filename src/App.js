@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid, Paper, Container, Box } from "@material-ui/core";
-import WeatherSymbol from "./components/WeatherSymbol";
+import WeatherInfoTile from "./components/WeatherInfoTile";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import MainContent from "./components/MainContent";
@@ -21,19 +21,19 @@ const App = () => (
             >
               Search for your city/region to check the weather
             </Box>
-            <Box>
-              <WeatherSymbol type="hot" />
-              <WeatherSymbol type="clear" />
-              <WeatherSymbol type="partlyCloudy" />
-              <WeatherSymbol type="windy" />
-              <WeatherSymbol type="snow" />
-              <WeatherSymbol type="cloudy" />
-              <WeatherSymbol type="scatteredSnow" />
-              <WeatherSymbol type="thunderstorms" />
-              <WeatherSymbol type="thunderstormsWithRain" />
-              <WeatherSymbol type="showers" />
-              <WeatherSymbol type="drizzle" />
-              <WeatherSymbol type="rainWithSun" />
+            <Box style={{display: 'flex', flexWrap: 'wrap'}}>
+              <WeatherInfoTile weatherType="hot" />
+              <WeatherInfoTile weatherType="clear" />
+              <WeatherInfoTile weatherType="partlyCloudy" />
+              <WeatherInfoTile weatherType="windy" />
+              <WeatherInfoTile weatherType="snow" />
+              <WeatherInfoTile weatherType="cloudy" />
+              <WeatherInfoTile weatherType="scatteredSnow" />
+              <WeatherInfoTile weatherType="thunderstorms" />
+              <WeatherInfoTile weatherType="thunderstormsWithRain" />
+              <WeatherInfoTile weatherType="showers" />
+              <WeatherInfoTile weatherType="drizzle" />
+              <WeatherInfoTile weatherType="rainWithSun" />
             </Box>
             <Paper square className="paper"></Paper>
           </Grid>
