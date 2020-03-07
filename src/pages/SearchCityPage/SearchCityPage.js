@@ -35,15 +35,12 @@ const SearchCityPage = () => {
 
               <LocationSelect
                 onChange={(event, value) => {
-                  console.log("place_id", value.place_id);
-
                   if (geocoderService) {
                     geocoderService.geocode(
                       {
                         placeId: value.place_id
                       },
                       (responses, status) => {
-                        console.log('status', status)
                         if (status === "OK") {
                           const lat = responses[0].geometry.location.lat();
                           const lng = responses[0].geometry.location.lng();
