@@ -5,6 +5,7 @@ import WeatherInfoTile from "../../components/WeatherInfoTile";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import MainContent from "../../components/MainContent";
+import ErrorBox from "../../components/ErrorBox";
 
 const WeatherForecastPage = () => {
   const { latitude, longitude } = useParams();
@@ -28,7 +29,7 @@ const WeatherForecastPage = () => {
       <>
         <Header />
           <MainContent center>
-            Error {responseStatus}
+            <ErrorBox>Error {responseStatus}</ErrorBox>
           </MainContent>
         <Footer />
       </>
