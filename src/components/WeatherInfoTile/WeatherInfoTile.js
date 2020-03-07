@@ -2,6 +2,7 @@ import React from "react";
 import { Paper } from "@material-ui/core";
 import Emoji from "a11y-react-emoji";
 import formatUnixDate from "../../utils/formatUnixDate";
+import { fahrenheitToCelsius, mphToKph } from "../../utils/unitsConverter";
 import WeatherSymbol from "../WeatherSymbol";
 
 import "./WeatherInfoTile.scss";
@@ -26,8 +27,8 @@ const WeatherInfoTile = ({
     <WeatherSymbol className="weather-symbol" type={weatherType} />
 
     <div className="temperature">
-      <div className="day">{temperatureDay}&deg;</div>
-      <div className="night">{temperatureNight}&deg;</div>
+      <div className="day">{fahrenheitToCelsius(temperatureDay)}&deg;</div>
+      <div className="night">{fahrenheitToCelsius(temperatureNight)}&deg;</div>
     </div>
 
     <div className="summary">
@@ -37,15 +38,15 @@ const WeatherInfoTile = ({
           symbol="☔️"
           label="Szansa opadów"
         />
-        {precipProbability}%
+        {Number(precipProbability * 100).toFixed(0)}%
       </div>
       <div className="summary-item">
         <Emoji className="summary-item-icon" symbol="💧" label="Wilgotność" />
-        {humidity}%
+        {Number(humidity).toFixed(0)}%
       </div>
       <div className="summary-item">
         <Emoji className="summary-item-icon" symbol="💨" label="Wiatr" />
-        {windSpeed}&nbsp;km/h
+        {mphToKph(windSpeed)}&nbsp;km/h
       </div>
     </div>
   </Paper>

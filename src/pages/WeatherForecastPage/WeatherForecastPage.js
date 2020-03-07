@@ -8,137 +8,1411 @@ import MainContent from "../../components/MainContent";
 
 const WeatherForecastPage = () => {
   const { latitude, longitude } = useParams();
+  const [forecastData, setForecastData] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    // TODO: fetch data from API
+    console.log("params", latitude, longitude);
+
+    // setIsLoading(true);
+    // fetch(`/${latitude},${longitude}`)
+    //   .then(response => response.json())
+    //   .then(data => setForecastData(data))
+    //   .finally(() => setIsLoading(false));
+    setForecastData({
+      latitude: 12,
+      longitude: 123,
+      timezone: "Asia/Manila",
+      currently: {
+        time: 1583450846,
+        summary: "Possible Drizzle and Humid",
+        icon: "rain",
+        precipIntensity: 0.0119,
+        precipProbability: 0.49,
+        precipType: "rain",
+        temperature: 80.4,
+        apparentTemperature: 87.11,
+        dewPoint: 76.78,
+        humidity: 0.89,
+        pressure: 1011.9,
+        windSpeed: 12.25,
+        windGust: 16.82,
+        windBearing: 13,
+        cloudCover: 0.86,
+        uvIndex: 1,
+        visibility: 10,
+        ozone: 256.7
+      },
+      hourly: {
+        summary: "Light rain and humid throughout the day.",
+        icon: "rain",
+        data: [
+          {
+            time: 1583449200,
+            summary: "Possible Drizzle and Humid",
+            icon: "rain",
+            precipIntensity: 0.0108,
+            precipProbability: 0.48,
+            precipType: "rain",
+            temperature: 80.12,
+            apparentTemperature: 86.54,
+            dewPoint: 76.79,
+            humidity: 0.9,
+            pressure: 1011.6,
+            windSpeed: 12.34,
+            windGust: 16.7,
+            windBearing: 15,
+            cloudCover: 0.89,
+            uvIndex: 0,
+            visibility: 10,
+            ozone: 256.8
+          },
+          {
+            time: 1583452800,
+            summary: "Possible Drizzle and Humid",
+            icon: "rain",
+            precipIntensity: 0.0133,
+            precipProbability: 0.5,
+            precipType: "rain",
+            temperature: 80.72,
+            apparentTemperature: 87.68,
+            dewPoint: 76.86,
+            humidity: 0.88,
+            pressure: 1012.1,
+            windSpeed: 12.37,
+            windGust: 17.02,
+            windBearing: 12,
+            cloudCover: 0.81,
+            uvIndex: 2,
+            visibility: 10,
+            ozone: 256.5
+          },
+          {
+            time: 1583456400,
+            summary: "Possible Light Rain and Humid",
+            icon: "rain",
+            precipIntensity: 0.0163,
+            precipProbability: 0.56,
+            precipType: "rain",
+            temperature: 81.35,
+            apparentTemperature: 89.31,
+            dewPoint: 77.39,
+            humidity: 0.88,
+            pressure: 1012.4,
+            windSpeed: 13.58,
+            windGust: 17.7,
+            windBearing: 15,
+            cloudCover: 0.69,
+            uvIndex: 4,
+            visibility: 10,
+            ozone: 256
+          },
+          {
+            time: 1583460000,
+            summary: "Possible Light Rain and Humid",
+            icon: "rain",
+            precipIntensity: 0.0199,
+            precipProbability: 0.59,
+            precipType: "rain",
+            temperature: 81.92,
+            apparentTemperature: 91.28,
+            dewPoint: 78.28,
+            humidity: 0.89,
+            pressure: 1012.4,
+            windSpeed: 15.4,
+            windGust: 18.46,
+            windBearing: 21,
+            cloudCover: 0.54,
+            uvIndex: 7,
+            visibility: 7.265,
+            ozone: 255.1
+          },
+          {
+            time: 1583463600,
+            summary: "Possible Light Rain and Humid",
+            icon: "rain",
+            precipIntensity: 0.023,
+            precipProbability: 0.63,
+            precipType: "rain",
+            temperature: 81.88,
+            apparentTemperature: 91.64,
+            dewPoint: 78.65,
+            humidity: 0.9,
+            pressure: 1012.1,
+            windSpeed: 16.48,
+            windGust: 18.59,
+            windBearing: 23,
+            cloudCover: 0.46,
+            uvIndex: 9,
+            visibility: 4.675,
+            ozone: 254.4
+          },
+          {
+            time: 1583467200,
+            summary: "Light Rain and Humid",
+            icon: "rain",
+            precipIntensity: 0.0272,
+            precipProbability: 0.67,
+            precipType: "rain",
+            temperature: 81.24,
+            apparentTemperature: 89.89,
+            dewPoint: 78.16,
+            humidity: 0.9,
+            pressure: 1011.4,
+            windSpeed: 16.16,
+            windGust: 17.35,
+            windBearing: 17,
+            cloudCover: 0.48,
+            uvIndex: 9,
+            visibility: 7.305,
+            ozone: 254.1
+          },
+          {
+            time: 1583470800,
+            summary: "Light Rain and Humid",
+            icon: "rain",
+            precipIntensity: 0.0354,
+            precipProbability: 0.7,
+            precipType: "rain",
+            temperature: 80.57,
+            apparentTemperature: 87.84,
+            dewPoint: 77.32,
+            humidity: 0.9,
+            pressure: 1010.5,
+            windSpeed: 15.12,
+            windGust: 15.43,
+            windBearing: 8,
+            cloudCover: 0.56,
+            uvIndex: 8,
+            visibility: 10,
+            ozone: 254.1
+          },
+          {
+            time: 1583474400,
+            summary: "Light Rain and Humid",
+            icon: "rain",
+            precipIntensity: 0.0405,
+            precipProbability: 0.72,
+            precipType: "rain",
+            temperature: 80.27,
+            apparentTemperature: 86.94,
+            dewPoint: 76.92,
+            humidity: 0.9,
+            pressure: 1009.9,
+            windSpeed: 13.97,
+            windGust: 14.37,
+            windBearing: 6,
+            cloudCover: 0.66,
+            uvIndex: 6,
+            visibility: 10,
+            ozone: 254.1
+          },
+          {
+            time: 1583478000,
+            summary: "Light Rain and Humid",
+            icon: "rain",
+            precipIntensity: 0.0329,
+            precipProbability: 0.74,
+            precipType: "rain",
+            temperature: 80.18,
+            apparentTemperature: 86.67,
+            dewPoint: 76.81,
+            humidity: 0.9,
+            pressure: 1009.9,
+            windSpeed: 12.73,
+            windGust: 14.93,
+            windBearing: 21,
+            cloudCover: 0.78,
+            uvIndex: 4,
+            visibility: 10,
+            ozone: 254.1
+          },
+          {
+            time: 1583481600,
+            summary: "Light Rain and Humid",
+            icon: "rain",
+            precipIntensity: 0.0245,
+            precipProbability: 0.74,
+            precipType: "rain",
+            temperature: 80.03,
+            apparentTemperature: 86.44,
+            dewPoint: 76.86,
+            humidity: 0.9,
+            pressure: 1010.3,
+            windSpeed: 11.37,
+            windGust: 16.35,
+            windBearing: 44,
+            cloudCover: 0.91,
+            uvIndex: 2,
+            visibility: 6.962,
+            ozone: 253.8
+          },
+          {
+            time: 1583485200,
+            summary: "Light Rain and Humid",
+            icon: "rain",
+            precipIntensity: 0.0245,
+            precipProbability: 0.72,
+            precipType: "rain",
+            temperature: 79.69,
+            apparentTemperature: 84.88,
+            dewPoint: 76.73,
+            humidity: 0.91,
+            pressure: 1010.7,
+            windSpeed: 10.58,
+            windGust: 17.9,
+            windBearing: 60,
+            cloudCover: 1,
+            uvIndex: 0,
+            visibility: 3.236,
+            ozone: 254.1
+          },
+          {
+            time: 1583488800,
+            summary: "Light Rain and Humid",
+            icon: "rain",
+            precipIntensity: 0.03,
+            precipProbability: 0.7,
+            precipType: "rain",
+            temperature: 79.21,
+            apparentTemperature: 83.61,
+            dewPoint: 76.29,
+            humidity: 0.91,
+            pressure: 1011.3,
+            windSpeed: 11.04,
+            windGust: 19.95,
+            windBearing: 61,
+            cloudCover: 1,
+            uvIndex: 0,
+            visibility: 2.119,
+            ozone: 255.1
+          },
+          {
+            time: 1583492400,
+            summary: "Light Rain and Humid",
+            icon: "rain",
+            precipIntensity: 0.0375,
+            precipProbability: 0.7,
+            precipType: "rain",
+            temperature: 78.45,
+            apparentTemperature: 81.6,
+            dewPoint: 75.4,
+            humidity: 0.9,
+            pressure: 1011.9,
+            windSpeed: 12.13,
+            windGust: 22.13,
+            windBearing: 57,
+            cloudCover: 1,
+            uvIndex: 0,
+            visibility: 2.34,
+            ozone: 256.4
+          },
+          {
+            time: 1583496000,
+            summary: "Light Rain and Humid",
+            icon: "rain",
+            precipIntensity: 0.0382,
+            precipProbability: 0.69,
+            precipType: "rain",
+            temperature: 77.66,
+            apparentTemperature: 79.36,
+            dewPoint: 74.52,
+            humidity: 0.9,
+            pressure: 1012.5,
+            windSpeed: 12.55,
+            windGust: 22.59,
+            windBearing: 48,
+            cloudCover: 1,
+            uvIndex: 0,
+            visibility: 3.745,
+            ozone: 257.4
+          },
+          {
+            time: 1583499600,
+            summary: "Light Rain and Humid",
+            icon: "rain",
+            precipIntensity: 0.029,
+            precipProbability: 0.67,
+            precipType: "rain",
+            temperature: 76.71,
+            apparentTemperature: 78.39,
+            dewPoint: 74.14,
+            humidity: 0.92,
+            pressure: 1012.8,
+            windSpeed: 11.22,
+            windGust: 19.68,
+            windBearing: 52,
+            cloudCover: 1,
+            uvIndex: 0,
+            visibility: 7.123,
+            ozone: 258
+          },
+          {
+            time: 1583503200,
+            summary: "Possible Light Rain and Humid",
+            icon: "rain",
+            precipIntensity: 0.0257,
+            precipProbability: 0.63,
+            precipType: "rain",
+            temperature: 76.2,
+            apparentTemperature: 77.95,
+            dewPoint: 74.46,
+            humidity: 0.94,
+            pressure: 1013.1,
+            windSpeed: 9.1,
+            windGust: 15.06,
+            windBearing: 64,
+            cloudCover: 1,
+            uvIndex: 0,
+            visibility: 10,
+            ozone: 258.2
+          },
+          {
+            time: 1583506800,
+            summary: "Possible Light Rain and Humid",
+            icon: "rain",
+            precipIntensity: 0.0268,
+            precipProbability: 0.57,
+            precipType: "rain",
+            temperature: 75.85,
+            apparentTemperature: 77.61,
+            dewPoint: 74.36,
+            humidity: 0.95,
+            pressure: 1013.1,
+            windSpeed: 7.83,
+            windGust: 12.1,
+            windBearing: 69,
+            cloudCover: 1,
+            uvIndex: 0,
+            visibility: 10,
+            ozone: 258.4
+          },
+          {
+            time: 1583510400,
+            summary: "Possible Drizzle and Humid",
+            icon: "rain",
+            precipIntensity: 0.0153,
+            precipProbability: 0.5,
+            precipType: "rain",
+            temperature: 75.97,
+            apparentTemperature: 77.72,
+            dewPoint: 74.42,
+            humidity: 0.95,
+            pressure: 1012.6,
+            windSpeed: 8.46,
+            windGust: 12.76,
+            windBearing: 62,
+            cloudCover: 1,
+            uvIndex: 0,
+            visibility: 10,
+            ozone: 258.5
+          },
+          {
+            time: 1583514000,
+            summary: "Possible Drizzle and Humid",
+            icon: "rain",
+            precipIntensity: 0.0034,
+            precipProbability: 0.25,
+            precipType: "rain",
+            temperature: 76.34,
+            apparentTemperature: 78.17,
+            dewPoint: 75,
+            humidity: 0.96,
+            pressure: 1012,
+            windSpeed: 9.98,
+            windGust: 15.09,
+            windBearing: 50,
+            cloudCover: 1,
+            uvIndex: 0,
+            visibility: 10,
+            ozone: 258.6
+          },
+          {
+            time: 1583517600,
+            summary: "Humid and Overcast",
+            icon: "cloudy",
+            precipIntensity: 0.0007,
+            precipProbability: 0.15,
+            precipType: "rain",
+            temperature: 77.08,
+            apparentTemperature: 78.98,
+            dewPoint: 75.7,
+            humidity: 0.96,
+            pressure: 1011.5,
+            windSpeed: 11.01,
+            windGust: 16.41,
+            windBearing: 42,
+            cloudCover: 1,
+            uvIndex: 0,
+            visibility: 10,
+            ozone: 258.7
+          },
+          {
+            time: 1583521200,
+            summary: "Possible Drizzle and Humid",
+            icon: "rain",
+            precipIntensity: 0.0014,
+            precipProbability: 0.27,
+            precipType: "rain",
+            temperature: 77.73,
+            apparentTemperature: 79.64,
+            dewPoint: 76.01,
+            humidity: 0.94,
+            pressure: 1011.3,
+            windSpeed: 10.87,
+            windGust: 15.21,
+            windBearing: 45,
+            cloudCover: 1,
+            uvIndex: 0,
+            visibility: 10,
+            ozone: 259.3
+          },
+          {
+            time: 1583524800,
+            summary: "Possible Drizzle and Humid",
+            icon: "rain",
+            precipIntensity: 0.0034,
+            precipProbability: 0.38,
+            precipType: "rain",
+            temperature: 78.45,
+            apparentTemperature: 81.68,
+            dewPoint: 76.06,
+            humidity: 0.92,
+            pressure: 1011.2,
+            windSpeed: 10.26,
+            windGust: 13.06,
+            windBearing: 53,
+            cloudCover: 1,
+            uvIndex: 0,
+            visibility: 10,
+            ozone: 259.6
+          },
+          {
+            time: 1583528400,
+            summary: "Possible Drizzle and Humid",
+            icon: "rain",
+            precipIntensity: 0.0058,
+            precipProbability: 0.43,
+            precipType: "rain",
+            temperature: 79,
+            apparentTemperature: 83.1,
+            dewPoint: 76.28,
+            humidity: 0.91,
+            pressure: 1011.3,
+            windSpeed: 9.92,
+            windGust: 11.9,
+            windBearing: 59,
+            cloudCover: 1,
+            uvIndex: 0,
+            visibility: 10,
+            ozone: 259.8
+          },
+          {
+            time: 1583532000,
+            summary: "Possible Drizzle and Humid",
+            icon: "rain",
+            precipIntensity: 0.0065,
+            precipProbability: 0.45,
+            precipType: "rain",
+            temperature: 79.42,
+            apparentTemperature: 84.22,
+            dewPoint: 76.65,
+            humidity: 0.91,
+            pressure: 1011.8,
+            windSpeed: 10.29,
+            windGust: 12.91,
+            windBearing: 61,
+            cloudCover: 1,
+            uvIndex: 0,
+            visibility: 10,
+            ozone: 259.1
+          },
+          {
+            time: 1583535600,
+            summary: "Possible Drizzle and Humid",
+            icon: "rain",
+            precipIntensity: 0.0065,
+            precipProbability: 0.48,
+            precipType: "rain",
+            temperature: 79.8,
+            apparentTemperature: 85.3,
+            dewPoint: 77.1,
+            humidity: 0.92,
+            pressure: 1012.5,
+            windSpeed: 10.93,
+            windGust: 14.9,
+            windBearing: 61,
+            cloudCover: 1,
+            uvIndex: 0,
+            visibility: 10,
+            ozone: 258.1
+          },
+          {
+            time: 1583539200,
+            summary: "Possible Drizzle and Humid",
+            icon: "rain",
+            precipIntensity: 0.0071,
+            precipProbability: 0.5,
+            precipType: "rain",
+            temperature: 80.33,
+            apparentTemperature: 87.7,
+            dewPoint: 77.64,
+            humidity: 0.92,
+            pressure: 1013,
+            windSpeed: 11.28,
+            windGust: 16.13,
+            windBearing: 63,
+            cloudCover: 1,
+            uvIndex: 2,
+            visibility: 8.805,
+            ozone: 257.3
+          },
+          {
+            time: 1583542800,
+            summary: "Possible Drizzle and Humid",
+            icon: "rain",
+            precipIntensity: 0.0093,
+            precipProbability: 0.5,
+            precipType: "rain",
+            temperature: 81.25,
+            apparentTemperature: 89.86,
+            dewPoint: 78.1,
+            humidity: 0.9,
+            pressure: 1013.2,
+            windSpeed: 11.07,
+            windGust: 15.84,
+            windBearing: 66,
+            cloudCover: 0.98,
+            uvIndex: 4,
+            visibility: 7.224,
+            ozone: 257.2
+          },
+          {
+            time: 1583546400,
+            summary: "Possible Drizzle and Humid",
+            icon: "rain",
+            precipIntensity: 0.0125,
+            precipProbability: 0.49,
+            precipType: "rain",
+            temperature: 82.41,
+            apparentTemperature: 92.7,
+            dewPoint: 78.74,
+            humidity: 0.89,
+            pressure: 1013,
+            windSpeed: 10.58,
+            windGust: 14.75,
+            windBearing: 69,
+            cloudCover: 0.94,
+            uvIndex: 5,
+            visibility: 5.799,
+            ozone: 257.3
+          },
+          {
+            time: 1583550000,
+            summary: "Possible Drizzle and Humid",
+            icon: "rain",
+            precipIntensity: 0.0148,
+            precipProbability: 0.48,
+            precipType: "rain",
+            temperature: 83.11,
+            apparentTemperature: 94.41,
+            dewPoint: 79.07,
+            humidity: 0.88,
+            pressure: 1012.6,
+            windSpeed: 9.95,
+            windGust: 13.42,
+            windBearing: 73,
+            cloudCover: 0.92,
+            uvIndex: 6,
+            visibility: 5.3,
+            ozone: 257.1
+          },
+          {
+            time: 1583553600,
+            summary: "Possible Drizzle and Humid",
+            icon: "rain",
+            precipIntensity: 0.0148,
+            precipProbability: 0.47,
+            precipType: "rain",
+            temperature: 83.42,
+            apparentTemperature: 94.82,
+            dewPoint: 78.95,
+            humidity: 0.86,
+            pressure: 1011.8,
+            windSpeed: 9.21,
+            windGust: 11.92,
+            windBearing: 78,
+            cloudCover: 0.92,
+            uvIndex: 6,
+            visibility: 6.745,
+            ozone: 256
+          },
+          {
+            time: 1583557200,
+            summary: "Possible Drizzle and Humid",
+            icon: "rain",
+            precipIntensity: 0.0138,
+            precipProbability: 0.46,
+            precipType: "rain",
+            temperature: 83.61,
+            apparentTemperature: 94.74,
+            dewPoint: 78.61,
+            humidity: 0.85,
+            pressure: 1010.7,
+            windSpeed: 8.38,
+            windGust: 10.21,
+            windBearing: 82,
+            cloudCover: 0.94,
+            uvIndex: 6,
+            visibility: 9.11,
+            ozone: 254.4
+          },
+          {
+            time: 1583560800,
+            summary: "Possible Drizzle and Humid",
+            icon: "rain",
+            precipIntensity: 0.0132,
+            precipProbability: 0.45,
+            precipType: "rain",
+            temperature: 83.94,
+            apparentTemperature: 95.08,
+            dewPoint: 78.32,
+            humidity: 0.83,
+            pressure: 1009.9,
+            windSpeed: 7.55,
+            windGust: 8.74,
+            windBearing: 84,
+            cloudCover: 0.95,
+            uvIndex: 5,
+            visibility: 10,
+            ozone: 253.5
+          },
+          {
+            time: 1583564400,
+            summary: "Possible Drizzle and Humid",
+            icon: "rain",
+            precipIntensity: 0.0131,
+            precipProbability: 0.46,
+            precipType: "rain",
+            temperature: 84.14,
+            apparentTemperature: 95.14,
+            dewPoint: 78.04,
+            humidity: 0.82,
+            pressure: 1009.6,
+            windSpeed: 6.48,
+            windGust: 7.17,
+            windBearing: 79,
+            cloudCover: 0.96,
+            uvIndex: 4,
+            visibility: 8.516,
+            ozone: 253.4
+          },
+          {
+            time: 1583568000,
+            summary: "Possible Drizzle and Humid",
+            icon: "rain",
+            precipIntensity: 0.0134,
+            precipProbability: 0.48,
+            precipType: "rain",
+            temperature: 84.14,
+            apparentTemperature: 94.73,
+            dewPoint: 77.64,
+            humidity: 0.81,
+            pressure: 1009.6,
+            windSpeed: 5.4,
+            windGust: 5.87,
+            windBearing: 72,
+            cloudCover: 0.98,
+            uvIndex: 2,
+            visibility: 5.538,
+            ozone: 253.8
+          },
+          {
+            time: 1583571600,
+            summary: "Possible Drizzle and Humid",
+            icon: "rain",
+            precipIntensity: 0.0152,
+            precipProbability: 0.51,
+            precipType: "rain",
+            temperature: 83.76,
+            apparentTemperature: 93.81,
+            dewPoint: 77.43,
+            humidity: 0.81,
+            pressure: 1009.7,
+            windSpeed: 5.4,
+            windGust: 6.27,
+            windBearing: 66,
+            cloudCover: 0.99,
+            uvIndex: 0,
+            visibility: 3.332,
+            ozone: 254.1
+          },
+          {
+            time: 1583575200,
+            summary: "Possible Light Rain and Humid",
+            icon: "rain",
+            precipIntensity: 0.0228,
+            precipProbability: 0.55,
+            precipType: "rain",
+            temperature: 83.07,
+            apparentTemperature: 92.45,
+            dewPoint: 77.34,
+            humidity: 0.83,
+            pressure: 1010.2,
+            windSpeed: 7.58,
+            windGust: 10.03,
+            windBearing: 66,
+            cloudCover: 0.99,
+            uvIndex: 0,
+            visibility: 2.44,
+            ozone: 254.1
+          },
+          {
+            time: 1583578800,
+            summary: "Possible Light Rain and Humid",
+            icon: "rain",
+            precipIntensity: 0.0386,
+            precipProbability: 0.58,
+            precipType: "rain",
+            temperature: 81.98,
+            apparentTemperature: 90.22,
+            dewPoint: 77.19,
+            humidity: 0.85,
+            pressure: 1010.8,
+            windSpeed: 10.81,
+            windGust: 15.5,
+            windBearing: 67,
+            cloudCover: 0.99,
+            uvIndex: 0,
+            visibility: 2.317,
+            ozone: 254.1
+          },
+          {
+            time: 1583582400,
+            summary: "Possible Light Rain and Humid",
+            icon: "rain",
+            precipIntensity: 0.048,
+            precipProbability: 0.56,
+            precipType: "rain",
+            temperature: 80.94,
+            apparentTemperature: 87.92,
+            dewPoint: 76.7,
+            humidity: 0.87,
+            pressure: 1011.3,
+            windSpeed: 13.06,
+            windGust: 19.25,
+            windBearing: 69,
+            cloudCover: 0.99,
+            uvIndex: 0,
+            visibility: 3.465,
+            ozone: 254.1
+          },
+          {
+            time: 1583586000,
+            summary: "Possible Light Rain and Humid",
+            icon: "rain",
+            precipIntensity: 0.0356,
+            precipProbability: 0.43,
+            precipType: "rain",
+            temperature: 80.27,
+            apparentTemperature: 86.33,
+            dewPoint: 76.24,
+            humidity: 0.88,
+            pressure: 1011.7,
+            windSpeed: 13.27,
+            windGust: 19.42,
+            windBearing: 70,
+            cloudCover: 0.99,
+            uvIndex: 0,
+            visibility: 6.922,
+            ozone: 254.2
+          },
+          {
+            time: 1583589600,
+            summary: "Possible Light Rain and Humid",
+            icon: "rain",
+            precipIntensity: 0.018,
+            precipProbability: 0.29,
+            precipType: "rain",
+            temperature: 79.75,
+            apparentTemperature: 84.84,
+            dewPoint: 76.26,
+            humidity: 0.89,
+            pressure: 1011.9,
+            windSpeed: 12.55,
+            windGust: 17.87,
+            windBearing: 72,
+            cloudCover: 1,
+            uvIndex: 0,
+            visibility: 10,
+            ozone: 254.6
+          },
+          {
+            time: 1583593200,
+            summary: "Humid and Overcast",
+            icon: "cloudy",
+            precipIntensity: 0.009,
+            precipProbability: 0.21,
+            precipType: "rain",
+            temperature: 79.3,
+            apparentTemperature: 83.69,
+            dewPoint: 75.91,
+            humidity: 0.89,
+            pressure: 1011.9,
+            windSpeed: 11.98,
+            windGust: 16.57,
+            windBearing: 73,
+            cloudCover: 1,
+            uvIndex: 0,
+            visibility: 10,
+            ozone: 255
+          },
+          {
+            time: 1583596800,
+            summary: "Humid and Overcast",
+            icon: "cloudy",
+            precipIntensity: 0.0045,
+            precipProbability: 0.12,
+            precipType: "rain",
+            temperature: 79.09,
+            apparentTemperature: 83.25,
+            dewPoint: 76.05,
+            humidity: 0.9,
+            pressure: 1011.6,
+            windSpeed: 11.95,
+            windGust: 16.19,
+            windBearing: 76,
+            cloudCover: 1,
+            uvIndex: 0,
+            visibility: 10,
+            ozone: 255.6
+          },
+          {
+            time: 1583600400,
+            summary: "Humid and Overcast",
+            icon: "cloudy",
+            precipIntensity: 0.0019,
+            precipProbability: 0.09,
+            precipType: "rain",
+            temperature: 78.96,
+            apparentTemperature: 83.03,
+            dewPoint: 76.42,
+            humidity: 0.92,
+            pressure: 1011,
+            windSpeed: 12.13,
+            windGust: 16.06,
+            windBearing: 78,
+            cloudCover: 1,
+            uvIndex: 0,
+            visibility: 10,
+            ozone: 256.1
+          },
+          {
+            time: 1583604000,
+            summary: "Humid and Overcast",
+            icon: "cloudy",
+            precipIntensity: 0.0012,
+            precipProbability: 0.12,
+            precipType: "rain",
+            temperature: 79.11,
+            apparentTemperature: 83.58,
+            dewPoint: 77.08,
+            humidity: 0.94,
+            pressure: 1010.6,
+            windSpeed: 12.52,
+            windGust: 16.35,
+            windBearing: 81,
+            cloudCover: 1,
+            uvIndex: 0,
+            visibility: 10,
+            ozone: 256.7
+          },
+          {
+            time: 1583607600,
+            summary: "Humid and Overcast",
+            icon: "cloudy",
+            precipIntensity: 0.0031,
+            precipProbability: 0.23,
+            precipType: "rain",
+            temperature: 79.36,
+            apparentTemperature: 84.35,
+            dewPoint: 77.51,
+            humidity: 0.94,
+            pressure: 1010.5,
+            windSpeed: 13.39,
+            windGust: 17.35,
+            windBearing: 85,
+            cloudCover: 1,
+            uvIndex: 0,
+            visibility: 10,
+            ozone: 256.9
+          },
+          {
+            time: 1583611200,
+            summary: "Possible Drizzle and Humid",
+            icon: "rain",
+            precipIntensity: 0.0085,
+            precipProbability: 0.33,
+            precipType: "rain",
+            temperature: 79.72,
+            apparentTemperature: 85.38,
+            dewPoint: 77.78,
+            humidity: 0.94,
+            pressure: 1010.5,
+            windSpeed: 14.47,
+            windGust: 18.75,
+            windBearing: 91,
+            cloudCover: 1,
+            uvIndex: 0,
+            visibility: 10,
+            ozone: 257.1
+          },
+          {
+            time: 1583614800,
+            summary: "Possible Drizzle and Humid",
+            icon: "rain",
+            precipIntensity: 0.0138,
+            precipProbability: 0.34,
+            precipType: "rain",
+            temperature: 80.13,
+            apparentTemperature: 87.86,
+            dewPoint: 78.22,
+            humidity: 0.94,
+            pressure: 1010.7,
+            windSpeed: 15.18,
+            windGust: 19.45,
+            windBearing: 94,
+            cloudCover: 1,
+            uvIndex: 0,
+            visibility: 10,
+            ozone: 257.1
+          },
+          {
+            time: 1583618400,
+            summary: "Possible Drizzle and Humid",
+            icon: "rain",
+            precipIntensity: 0.0147,
+            precipProbability: 0.3,
+            precipType: "rain",
+            temperature: 80.46,
+            apparentTemperature: 88.94,
+            dewPoint: 78.69,
+            humidity: 0.94,
+            pressure: 1011.2,
+            windSpeed: 15.24,
+            windGust: 18.98,
+            windBearing: 96,
+            cloudCover: 1,
+            uvIndex: 0,
+            visibility: 10,
+            ozone: 256.9
+          },
+          {
+            time: 1583622000,
+            summary: "Possible Drizzle and Humid",
+            icon: "rain",
+            precipIntensity: 0.0131,
+            precipProbability: 0.25,
+            precipType: "rain",
+            temperature: 80.8,
+            apparentTemperature: 90.04,
+            dewPoint: 79.09,
+            humidity: 0.95,
+            pressure: 1011.8,
+            windSpeed: 14.93,
+            windGust: 17.83,
+            windBearing: 95,
+            cloudCover: 1,
+            uvIndex: 0,
+            visibility: 10,
+            ozone: 256.8
+          }
+        ]
+      },
+      daily: {
+        summary: "Light rain today through Sunday.",
+        icon: "rain",
+        data: [
+          {
+            time: 1583424000,
+            summary: "Light rain and humid throughout the day.",
+            icon: "rain",
+            sunriseTime: 1583445720,
+            sunsetTime: 1583488740,
+            moonPhase: 0.38,
+            precipIntensity: 0.0205,
+            precipIntensityMax: 0.0406,
+            precipIntensityMaxTime: 1583474160,
+            precipProbability: 1,
+            precipType: "rain",
+            temperatureHigh: 82.48,
+            temperatureHighTime: 1583461620,
+            temperatureLow: 75.35,
+            temperatureLowTime: 1583507460,
+            apparentTemperatureHigh: 91.73,
+            apparentTemperatureHighTime: 1583462580,
+            apparentTemperatureLow: 77.59,
+            apparentTemperatureLowTime: 1583507520,
+            dewPoint: 76.42,
+            humidity: 0.91,
+            pressure: 1011.3,
+            windSpeed: 13.03,
+            windGust: 22.75,
+            windGustTime: 1583494980,
+            windBearing: 27,
+            cloudCover: 0.86,
+            uvIndex: 9,
+            uvIndexTime: 1583466480,
+            visibility: 8.09,
+            ozone: 255.8,
+            temperatureMin: 75.35,
+            temperatureMinTime: 1583507460,
+            temperatureMax: 82.48,
+            temperatureMaxTime: 1583461620,
+            apparentTemperatureMin: 77.59,
+            apparentTemperatureMinTime: 1583507520,
+            apparentTemperatureMax: 91.73,
+            apparentTemperatureMaxTime: 1583462580
+          },
+          {
+            time: 1583510400,
+            summary: "Light rain and humid throughout the day.",
+            icon: "rain",
+            sunriseTime: 1583532060,
+            sunsetTime: 1583575140,
+            moonPhase: 0.42,
+            precipIntensity: 0.014,
+            precipIntensityMax: 0.0481,
+            precipIntensityMaxTime: 1583582280,
+            precipProbability: 0.95,
+            precipType: "rain",
+            temperatureHigh: 84.68,
+            temperatureHighTime: 1583566500,
+            temperatureLow: 78.47,
+            temperatureLowTime: 1583600340,
+            apparentTemperatureHigh: 95.17,
+            apparentTemperatureHighTime: 1583563380,
+            apparentTemperatureLow: 83.02,
+            apparentTemperatureLowTime: 1583599920,
+            dewPoint: 77.09,
+            humidity: 0.88,
+            pressure: 1011.4,
+            windSpeed: 9.92,
+            windGust: 19.67,
+            windGustTime: 1583584140,
+            windBearing: 66,
+            cloudCover: 0.98,
+            uvIndex: 6,
+            uvIndexTime: 1583553360,
+            visibility: 7.761,
+            ozone: 256.3,
+            temperatureMin: 75.48,
+            temperatureMinTime: 1583510400,
+            temperatureMax: 84.68,
+            temperatureMaxTime: 1583566500,
+            apparentTemperatureMin: 77.72,
+            apparentTemperatureMinTime: 1583510400,
+            apparentTemperatureMax: 95.17,
+            apparentTemperatureMaxTime: 1583563380
+          },
+          {
+            time: 1583596800,
+            summary: "Possible drizzle in the morning.",
+            icon: "rain",
+            sunriseTime: 1583618460,
+            sunsetTime: 1583661600,
+            moonPhase: 0.45,
+            precipIntensity: 0.0031,
+            precipIntensityMax: 0.0148,
+            precipIntensityMaxTime: 1583617560,
+            precipProbability: 0.5,
+            precipType: "rain",
+            temperatureHigh: 85.36,
+            temperatureHighTime: 1583656320,
+            temperatureLow: 79.44,
+            temperatureLowTime: 1583685600,
+            apparentTemperatureHigh: 98.54,
+            apparentTemperatureHighTime: 1583636700,
+            apparentTemperatureLow: 85.56,
+            apparentTemperatureLowTime: 1583684460,
+            dewPoint: 78.01,
+            humidity: 0.88,
+            pressure: 1010.8,
+            windSpeed: 11.84,
+            windGust: 19.45,
+            windGustTime: 1583615040,
+            windBearing: 97,
+            cloudCover: 0.88,
+            uvIndex: 6,
+            uvIndexTime: 1583638200,
+            visibility: 10,
+            ozone: 257,
+            temperatureMin: 78.47,
+            temperatureMinTime: 1583600340,
+            temperatureMax: 85.36,
+            temperatureMaxTime: 1583656320,
+            apparentTemperatureMin: 83.02,
+            apparentTemperatureMinTime: 1583599920,
+            apparentTemperatureMax: 98.54,
+            apparentTemperatureMaxTime: 1583636700
+          },
+          {
+            time: 1583683200,
+            summary: "Humid and mostly cloudy throughout the day.",
+            icon: "partly-cloudy-day",
+            sunriseTime: 1583704800,
+            sunsetTime: 1583748000,
+            moonPhase: 0.49,
+            precipIntensity: 0.0001,
+            precipIntensityMax: 0.0004,
+            precipIntensityMaxTime: 1583711460,
+            precipProbability: 0.13,
+            precipType: "rain",
+            temperatureHigh: 85,
+            temperatureHighTime: 1583743620,
+            temperatureLow: 79.3,
+            temperatureLowTime: 1583777520,
+            apparentTemperatureHigh: 93.66,
+            apparentTemperatureHighTime: 1583722560,
+            apparentTemperatureLow: 85.51,
+            apparentTemperatureLowTime: 1583774880,
+            dewPoint: 76.71,
+            humidity: 0.84,
+            pressure: 1010.3,
+            windSpeed: 12.09,
+            windGust: 19.6,
+            windGustTime: 1583702880,
+            windBearing: 106,
+            cloudCover: 0.77,
+            uvIndex: 6,
+            uvIndexTime: 1583725920,
+            visibility: 10,
+            ozone: 256.7,
+            temperatureMin: 79.44,
+            temperatureMinTime: 1583685600,
+            temperatureMax: 85,
+            temperatureMaxTime: 1583743620,
+            apparentTemperatureMin: 85.56,
+            apparentTemperatureMinTime: 1583684460,
+            apparentTemperatureMax: 93.66,
+            apparentTemperatureMaxTime: 1583722560
+          },
+          {
+            time: 1583769600,
+            summary: "Humid throughout the day.",
+            icon: "clear-day",
+            sunriseTime: 1583791200,
+            sunsetTime: 1583834400,
+            moonPhase: 0.53,
+            precipIntensity: 0.0001,
+            precipIntensityMax: 0.0003,
+            precipIntensityMaxTime: 1583839980,
+            precipProbability: 0.07,
+            precipType: "rain",
+            temperatureHigh: 84.66,
+            temperatureHighTime: 1583828700,
+            temperatureLow: 79.27,
+            temperatureLowTime: 1583865660,
+            apparentTemperatureHigh: 94.62,
+            apparentTemperatureHighTime: 1583827320,
+            apparentTemperatureLow: 85.4,
+            apparentTemperatureLowTime: 1583866200,
+            dewPoint: 77.77,
+            humidity: 0.87,
+            pressure: 1011.6,
+            windSpeed: 10.42,
+            windGust: 16.34,
+            windGustTime: 1583853420,
+            windBearing: 91,
+            cloudCover: 0.51,
+            uvIndex: 13,
+            uvIndexTime: 1583812920,
+            visibility: 10,
+            ozone: 255.6,
+            temperatureMin: 79.3,
+            temperatureMinTime: 1583777520,
+            temperatureMax: 84.66,
+            temperatureMaxTime: 1583828700,
+            apparentTemperatureMin: 85.51,
+            apparentTemperatureMinTime: 1583774880,
+            apparentTemperatureMax: 94.62,
+            apparentTemperatureMaxTime: 1583827320
+          },
+          {
+            time: 1583856000,
+            summary: "Humid and mostly cloudy throughout the day.",
+            icon: "partly-cloudy-day",
+            sunriseTime: 1583877540,
+            sunsetTime: 1583920800,
+            moonPhase: 0.57,
+            precipIntensity: 0.0001,
+            precipIntensityMax: 0.0004,
+            precipIntensityMaxTime: 1583907180,
+            precipProbability: 0.07,
+            precipType: "rain",
+            temperatureHigh: 85.35,
+            temperatureHighTime: 1583915280,
+            temperatureLow: 78.69,
+            temperatureLowTime: 1583949660,
+            apparentTemperatureHigh: 95.2,
+            apparentTemperatureHighTime: 1583896560,
+            apparentTemperatureLow: 83.86,
+            apparentTemperatureLowTime: 1583949660,
+            dewPoint: 77.44,
+            humidity: 0.86,
+            pressure: 1012.9,
+            windSpeed: 12.47,
+            windGust: 24.93,
+            windGustTime: 1583932920,
+            windBearing: 79,
+            cloudCover: 0.74,
+            uvIndex: 9,
+            uvIndexTime: 1583901900,
+            visibility: 10,
+            ozone: 255.9,
+            temperatureMin: 79.19,
+            temperatureMinTime: 1583942400,
+            temperatureMax: 85.35,
+            temperatureMaxTime: 1583915280,
+            apparentTemperatureMin: 85.3,
+            apparentTemperatureMinTime: 1583942400,
+            apparentTemperatureMax: 95.2,
+            apparentTemperatureMaxTime: 1583896560
+          },
+          {
+            time: 1583942400,
+            summary: "Humid and mostly cloudy throughout the day.",
+            icon: "partly-cloudy-day",
+            sunriseTime: 1583963880,
+            sunsetTime: 1584007200,
+            moonPhase: 0.61,
+            precipIntensity: 0.0008,
+            precipIntensityMax: 0.0046,
+            precipIntensityMaxTime: 1583971200,
+            precipProbability: 0.13,
+            precipType: "rain",
+            temperatureHigh: 86.24,
+            temperatureHighTime: 1583999040,
+            temperatureLow: 78.42,
+            temperatureLowTime: 1584035100,
+            apparentTemperatureHigh: 97.3,
+            apparentTemperatureHighTime: 1584001680,
+            apparentTemperatureLow: 83.59,
+            apparentTemperatureLowTime: 1584034920,
+            dewPoint: 77.72,
+            humidity: 0.87,
+            pressure: 1013.5,
+            windSpeed: 15.43,
+            windGust: 23.43,
+            windGustTime: 1583942400,
+            windBearing: 71,
+            cloudCover: 0.56,
+            uvIndex: 8,
+            uvIndexTime: 1583985780,
+            visibility: 10,
+            ozone: 255.6,
+            temperatureMin: 78.69,
+            temperatureMinTime: 1583949660,
+            temperatureMax: 86.24,
+            temperatureMaxTime: 1583999040,
+            apparentTemperatureMin: 83.86,
+            apparentTemperatureMinTime: 1583949660,
+            apparentTemperatureMax: 97.3,
+            apparentTemperatureMaxTime: 1584001680
+          },
+          {
+            time: 1584028800,
+            summary: "Humid throughout the day.",
+            icon: "clear-day",
+            sunriseTime: 1584050280,
+            sunsetTime: 1584093600,
+            moonPhase: 0.65,
+            precipIntensity: 0.0003,
+            precipIntensityMax: 0.0028,
+            precipIntensityMaxTime: 1584036300,
+            precipProbability: 0.1,
+            precipType: "rain",
+            temperatureHigh: 85.82,
+            temperatureHighTime: 1584088260,
+            temperatureLow: 78.45,
+            temperatureLowTime: 1584122580,
+            apparentTemperatureHigh: 96.96,
+            apparentTemperatureHighTime: 1584070020,
+            apparentTemperatureLow: 83.4,
+            apparentTemperatureLowTime: 1584122340,
+            dewPoint: 78.39,
+            humidity: 0.88,
+            pressure: 1013.4,
+            windSpeed: 13.22,
+            windGust: 22.75,
+            windGustTime: 1584102600,
+            windBearing: 63,
+            cloudCover: 0.19,
+            uvIndex: 13,
+            uvIndexTime: 1584071940,
+            visibility: 10,
+            ozone: 256.5,
+            temperatureMin: 78.42,
+            temperatureMinTime: 1584035100,
+            temperatureMax: 85.82,
+            temperatureMaxTime: 1584088260,
+            apparentTemperatureMin: 83.59,
+            apparentTemperatureMinTime: 1584034920,
+            apparentTemperatureMax: 96.96,
+            apparentTemperatureMaxTime: 1584070020
+          }
+        ]
+      },
+      flags: {
+        sources: ["cmc", "gfs", "icon", "isd", "madis"],
+        "nearest-station": 32.334,
+        units: "us"
+      },
+      offset: 8
+    });
+  }, [latitude, longitude]);
+
+  console.log("forecastData", forecastData);
 
   return (
     <>
       <Header />
 
-      <MainContent>
-        <Container>
-          <Grid container>
-            <Grid item xs={12}>
-              <Box
-                textAlign="center"
-                fontSize="h5.fontSize"
-                fontFamily="h6.fontFamily"
-                lineHeight={2}
-              >
-                Forecast
-              </Box>
+      <MainContent center={isLoading || !forecastData}>
+        {isLoading || !forecastData ? (
+          <CircularProgress />
+        ) : (
+          <Container>
+            <Grid container>
+              <Grid item xs={12}>
+                <Box
+                  textAlign="center"
+                  fontSize="h5.fontSize"
+                  fontFamily="h6.fontFamily"
+                  lineHeight={2}
+                >
+                  Forecast
+                </Box>
 
-              <Box style={{ display: "flex", flexWrap: "wrap" }}>
-                <WeatherInfoTile
-                  weatherType="hot"
-                  temperatureDay={23}
-                  temperatureNight={7}
-                  precipProbability={30}
-                  humidity={30}
-                  windSpeed={12}
-                  date={1509944400}
-                />
-                <WeatherInfoTile
-                  weatherType="clear"
-                  temperatureDay={23}
-                  temperatureNight={7}
-                  precipProbability={30}
-                  humidity={30}
-                  windSpeed={12}
-                  date={1583448957542}
-                />
-                <WeatherInfoTile
-                  weatherType="partlyCloudy"
-                  temperatureDay={23}
-                  temperatureNight={7}
-                  precipProbability={30}
-                  humidity={30}
-                  windSpeed={12}
-                  date={1583448957542}
-                />
-                <WeatherInfoTile
-                  weatherType="windy"
-                  temperatureDay={23}
-                  temperatureNight={7}
-                  precipProbability={30}
-                  humidity={30}
-                  windSpeed={12}
-                  date={1583448957542}
-                />
-                <WeatherInfoTile
-                  weatherType="snow"
-                  temperatureDay={23}
-                  temperatureNight={7}
-                  precipProbability={30}
-                  humidity={30}
-                  windSpeed={12}
-                  date={1583448957542}
-                />
-                <WeatherInfoTile
-                  weatherType="cloudy"
-                  temperatureDay={23}
-                  temperatureNight={7}
-                  precipProbability={30}
-                  humidity={30}
-                  windSpeed={12}
-                  date={1583448957542}
-                />
-                <WeatherInfoTile
-                  weatherType="scatteredSnow"
-                  temperatureDay={23}
-                  temperatureNight={7}
-                  precipProbability={30}
-                  humidity={30}
-                  windSpeed={12}
-                  date={1583448957542}
-                />
-                <WeatherInfoTile
-                  weatherType="thunderstorms"
-                  temperatureDay={23}
-                  temperatureNight={7}
-                  precipProbability={30}
-                  humidity={30}
-                  windSpeed={12}
-                  date={1583448957542}
-                />
-                <WeatherInfoTile
-                  weatherType="thunderstormsWithRain"
-                  temperatureDay={23}
-                  temperatureNight={7}
-                  precipProbability={30}
-                  humidity={30}
-                  windSpeed={12}
-                  date={1583448957542}
-                />
-                <WeatherInfoTile
-                  weatherType="showers"
-                  temperatureDay={23}
-                  temperatureNight={7}
-                  precipProbability={30}
-                  humidity={30}
-                  windSpeed={12}
-                  date={1583448957542}
-                />
-                <WeatherInfoTile
-                  weatherType="drizzle"
-                  temperatureDay={23}
-                  temperatureNight={7}
-                  precipProbability={30}
-                  humidity={30}
-                  windSpeed={12}
-                  date={1583448957542}
-                />
-                <WeatherInfoTile
-                  weatherType="rainWithSun"
-                  temperatureDay={23}
-                  temperatureNight={7}
-                  precipProbability={30}
-                  humidity={30}
-                  windSpeed={12}
-                  date={1583448957542}
-                />
-              </Box>
+                <Box style={{ display: "flex", flexWrap: "wrap" }}>
+                  {forecastData.daily.data.map((item, index) => (
+                    <WeatherInfoTile
+                      key={index}
+                      weatherType={item.icon}
+                      temperatureDay={item.temperatureHigh}
+                      temperatureNight={item.temperatureLow}
+                      precipProbability={item.precipProbability}
+                      humidity={item.humidity}
+                      windSpeed={item.windSpeed}
+                      date={item.time}
+                    />
+                  ))}
+                </Box>
+              </Grid>
             </Grid>
-          </Grid>
-        </Container>
+          </Container>
+        )}
       </MainContent>
 
       <Footer />

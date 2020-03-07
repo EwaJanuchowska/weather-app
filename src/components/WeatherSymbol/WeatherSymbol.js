@@ -6,15 +6,15 @@ import "./WeatherSymbol.scss";
 const WeatherSymbol = ({ type, className }) => {
   const symbolsMap = {
     hot: "🌡",
-    clear: "☀️",
-    partlyCloudy: "⛅️",
+    'clear-day': "☀️",
+    "partly-cloudy-day": "⛅️",
     windy: "💨",
     snow: "❄️",
     cloudy: "☁️",
     scatteredSnow: "🌨",
     thunderstorms: "🌩",
     thunderstormsWithRain: "⛈",
-    showers: "🌧",
+    rain: "🌧",
     drizzle: "🌦",
     rainWithSun: "🌦"
   };
@@ -23,7 +23,7 @@ const WeatherSymbol = ({ type, className }) => {
     <Emoji
       className={`WeatherSymbol ${className}`}
       symbol={symbolsMap[type]}
-      label={Object.keys(symbolsMap[type])}
+      label={symbolsMap[type] ? Object.keys(symbolsMap[type]) : ""}
     />
   );
 };
