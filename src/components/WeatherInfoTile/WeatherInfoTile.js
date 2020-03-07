@@ -27,8 +27,12 @@ const WeatherInfoTile = ({
     <WeatherSymbol className="weather-symbol" type={weatherType} />
 
     <div className="temperature">
-      <div className="day">{fahrenheitToCelsius(temperatureDay)}&deg;</div>
-      <div className="night">{fahrenheitToCelsius(temperatureNight)}&deg;</div>
+      <div className="day">
+        {Math.round(fahrenheitToCelsius(temperatureDay))}&deg;
+      </div>
+      <div className="night">
+        {Math.round(fahrenheitToCelsius(temperatureNight))}&deg;
+      </div>
     </div>
 
     <div className="summary">
@@ -46,7 +50,7 @@ const WeatherInfoTile = ({
       </div>
       <div className="summary-item">
         <Emoji className="summary-item-icon" symbol="💨" label="Wiatr" />
-        {mphToKph(windSpeed)}&nbsp;km/h
+        {Math.round(mphToKph(windSpeed))}&nbsp;km/h
       </div>
     </div>
   </Paper>

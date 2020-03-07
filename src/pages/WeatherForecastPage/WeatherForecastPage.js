@@ -10,27 +10,43 @@ import ErrorBox from "../../components/ErrorBox";
 const WeatherForecastPage = () => {
   const { latitude, longitude } = useParams();
   const [forecastData, setForecastData] = useState(null);
-  const [responseStatus, setResponseStatus] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setIsLoading(true);
     fetch(`/${process.env.REACT_APP_DARKSKY_KEY}/${latitude},${longitude}`)
       .then(response => {
-        setResponseStatus(response.status);
+        console.log("res", response);
+        if (response.status !== 200) {
+          setError(`${response.status}: ${response.statusText}`);
+        }
         return response.json();
       })
-      .then(data => setForecastData(data))
+      .then(data => {
+        setForecastData(data);
+      })
       .finally(() => setIsLoading(false));
   }, [latitude, longitude]);
 
-  if (responseStatus !== 200) {
+  if (isLoading) {
     return (
       <>
         <Header />
-          <MainContent center>
-            <ErrorBox>Error {responseStatus}</ErrorBox>
-          </MainContent>
+        <MainContent center>
+          <CircularProgress />
+        </MainContent>
+        <Footer />
+      </>
+    );
+  }
+
+  if (error) {
+    return (
+      <>
+        <Header />
+        <MainContent center>
+          <ErrorBox>Error {error}</ErrorBox>
+        </MainContent>
         <Footer />
       </>
     );
@@ -40,40 +56,36 @@ const WeatherForecastPage = () => {
     <>
       <Header />
 
-      <MainContent center={isLoading}>
-        {isLoading ? (
-          <CircularProgress />
-        ) : (
-          <Container>
-            <Grid container>
-              <Grid item xs={12}>
-                <Box
-                  textAlign="center"
-                  fontSize="h5.fontSize"
-                  fontFamily="h6.fontFamily"
-                  lineHeight={2}
-                >
-                  Forecast for the next few days
-                </Box>
+      <MainContent>
+        <Container>
+          <Grid container>
+            <Grid item xs={12}>
+              <Box
+                textAlign="center"
+                fontSize="h5.fontSize"
+                fontFamily="h6.fontFamily"
+                lineHeight={2}
+              >
+                Forecast for the next few days
+              </Box>
 
-                <Box style={{ display: "flex", flexWrap: "wrap" }}>
-                  {forecastData.daily.data.map((item, index) => (
-                    <WeatherInfoTile
-                      key={index}
-                      weatherType={item.icon}
-                      temperatureDay={item.temperatureHigh}
-                      temperatureNight={item.temperatureLow}
-                      precipProbability={item.precipProbability}
-                      humidity={item.humidity}
-                      windSpeed={item.windSpeed}
-                      date={item.time}
-                    />
-                  ))}
-                </Box>
-              </Grid>
+              <Box style={{ display: "flex", flexWrap: "wrap" }}>
+                {forecastData.daily.data.map((item, index) => (
+                  <WeatherInfoTile
+                    key={index}
+                    weatherType={item.icon}
+                    temperatureDay={item.temperatureHigh}
+                    temperatureNight={item.temperatureLow}
+                    precipProbability={item.precipProbability}
+                    humidity={item.humidity}
+                    windSpeed={item.windSpeed}
+                    date={item.time}
+                  />
+                ))}
+              </Box>
             </Grid>
-          </Container>
-        )}
+          </Grid>
+        </Container>
       </MainContent>
 
       <Footer />
