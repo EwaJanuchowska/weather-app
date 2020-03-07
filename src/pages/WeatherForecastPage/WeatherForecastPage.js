@@ -9,24 +9,38 @@ import MainContent from "../../components/MainContent";
 const WeatherForecastPage = () => {
   const { latitude, longitude } = useParams();
   const [forecastData, setForecastData] = useState(null);
+  const [responseStatus, setResponseStatus] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
-    fetch(`/${latitude},${longitude}`)
-      .then(response => response.json())
+    fetch(`/${process.env.REACT_APP_DARKSKY_KEY}/${latitude},${longitude}`)
+      .then(response => {
+        setResponseStatus(response.status);
+        return response.json();
+      })
       .then(data => setForecastData(data))
       .finally(() => setIsLoading(false));
   }, [latitude, longitude]);
 
-  console.log("forecastData", forecastData);
+  if (responseStatus !== 200) {
+    return (
+      <>
+        <Header />
+          <MainContent center>
+            Error {responseStatus}
+          </MainContent>
+        <Footer />
+      </>
+    );
+  }
 
   return (
     <>
       <Header />
 
-      <MainContent center={isLoading || !forecastData}>
-        {isLoading || !forecastData ? (
+      <MainContent center={isLoading}>
+        {isLoading ? (
           <CircularProgress />
         ) : (
           <Container>

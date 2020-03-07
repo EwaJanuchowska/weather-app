@@ -42,5 +42,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://api.darksky.net/forecast/f10a97a6921a4e6bcf978b0ce8477437"
+  "proxy": "https://api.darksky.net/forecast"
 }
