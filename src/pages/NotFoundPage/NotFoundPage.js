@@ -13,7 +13,9 @@ const NotFoundPage = () => (
       <Typography variant="h1" component="h2" gutterBottom>
         404 - not found
       </Typography>
-      <Link to="/" component={RouterLink}>Go to main page</Link>
+      <Link to="/" component={RouterLink}>
+        Go to main page
+      </Link>
     </MainContent>
 
     <Footer />

@@ -1,34 +1,68 @@
-import React from "react";
-import { Grid, Paper, Container, Box } from "@material-ui/core";
+import React, { useEffect } from "react";
+import { Grid, Container, Box } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import MainContent from "../../components/MainContent";
+import LocationSelect from "../../components/LocationSelect";
 
-const SearchCityPage = () => (
-  <>
-    <Header />
+let geocoderService = null;
 
-    <MainContent center>
-      <Container>
-        <Grid container>
-          <Grid item xs={12}>
-            <Box
-              textAlign="center"
-              fontSize="h5.fontSize"
-              fontFamily="h6.fontFamily"
-              lineHeight={2}
-            >
-              Search for your city/region to check the weather
-            </Box>
+const SearchCityPage = () => {
+  const history = useHistory();
+  useEffect(() => {
+    if (!geocoderService && window.google) {
+      geocoderService = new window.google.maps.Geocoder();
+    }
+  }, []);
 
-            <Paper square className="paper"></Paper>
+  return (
+    <>
+      <Header />
+
+      <MainContent center>
+        <Container>
+          <Grid container>
+            <Grid item xs={12}>
+              <Box
+                textAlign="center"
+                fontSize="h5.fontSize"
+                fontFamily="h6.fontFamily"
+                lineHeight={2}
+              >
+                Search for your city/region to check the weather
+              </Box>
+
+              <LocationSelect
+                onChange={(event, value) => {
+                  console.log("place_id", value.place_id);
+
+                  if (geocoderService) {
+                    geocoderService.geocode(
+                      {
+                        placeId: value.place_id
+                      },
+                      (responses, status) => {
+                        console.log('status', status)
+                        if (status === "OK") {
+                          const lat = responses[0].geometry.location.lat();
+                          const lng = responses[0].geometry.location.lng();
+
+                          history.push(`/weather-forecast/${lat}/${lng}`);
+                        }
+                      }
+                    );
+                  }
+                }}
+              />
+            </Grid>
           </Grid>
-        </Grid>
-      </Container>
-    </MainContent>
+        </Container>
+      </MainContent>
 
-    <Footer />
-  </>
-);
+      <Footer />
+    </>
+  );
+};
 
 export default SearchCityPage;
