@@ -1,38 +1,22 @@
 import React from "react";
-import { Paper } from "@material-ui/core";
 import Emoji from "a11y-react-emoji";
-import formatUnixDate from "../../utils/formatUnixDate";
 import { fahrenheitToCelsius, mphToKph } from "../../utils/unitsConverter";
 import WeatherSymbol from "../WeatherSymbol";
 
-import "./WeatherInfoTile.scss";
+import "./CurrentWeatherInfoTile.scss";
 
-const WeatherInfoTile = ({
+const CurrentWeatherInfoTile = ({
   weatherType,
-  temperatureDay,
-  temperatureNight,
+  temperature,
   precipProbability,
   humidity,
-  windSpeed,
-  date
+  windSpeed
 }) => (
-  <Paper square elevation={2} className="WeatherInfoTile">
-    {date && (
-      <div className="date-time">
-        <div>{formatUnixDate(date, "iii")}</div>
-        <div>{formatUnixDate(date, "dd.MM")}</div>
-      </div>
-    )}
-
+  <div className="CurrentWeatherInfoTile">
     <WeatherSymbol className="weather-symbol" type={weatherType} />
 
     <div className="temperature">
-      <div className="day">
-        {Math.round(fahrenheitToCelsius(temperatureDay))}&deg;
-      </div>
-      <div className="night">
-        {Math.round(fahrenheitToCelsius(temperatureNight))}&deg;
-      </div>
+      {Math.round(fahrenheitToCelsius(temperature))}&deg;
     </div>
 
     <div className="summary">
@@ -53,7 +37,7 @@ const WeatherInfoTile = ({
         {Math.round(mphToKph(windSpeed))}&nbsp;km/h
       </div>
     </div>
-  </Paper>
+  </div>
 );
 
-export default WeatherInfoTile;
+export default CurrentWeatherInfoTile;

@@ -7,14 +7,18 @@ const WeatherSymbol = ({ type, className }) => {
   const symbolsMap = {
     hot: "🌡",
     'clear-day': "☀️",
-    "partly-cloudy-day": "⛅️",
-    windy: "💨",
-    snow: "❄️",
-    cloudy: "☁️",
-    scatteredSnow: "🌨",
-    thunderstorms: "🌩",
-    thunderstormsWithRain: "⛈",
+    'clear-night': '🌙',
     rain: "🌧",
+    snow: "❄️",
+    sleet: '🌨',
+    wind: "💨",
+    fog: '🌫',
+    cloudy: "☁️",
+    "partly-cloudy-day": "⛅️",
+    'partly-cloudy-night': "☁️",
+
+    thunderstorm: "🌩",
+    thunderstormsWithRain: "⛈",
     drizzle: "🌦",
     rainWithSun: "🌦"
   };
