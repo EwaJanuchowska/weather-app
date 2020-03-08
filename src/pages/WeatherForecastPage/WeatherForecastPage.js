@@ -30,19 +30,19 @@ const WeatherForecastPage = () => {
   useEffect(() => {
     if (!geocoderService && window.google) {
       geocoderService = new window.google.maps.Geocoder();
+    }
 
-      if (geocoderService) {
-        geocoderService.geocode(
-          {
-            placeId
-          },
-          (responses, status) => {
-            if (status === "OK") {
-              setRegion(responses[0].formatted_address);
-            }
+    if (geocoderService) {
+      geocoderService.geocode(
+        {
+          placeId
+        },
+        (responses, status) => {
+          if (status === "OK") {
+            setRegion(responses[0].formatted_address);
           }
-        );
-      }
+        }
+      );
     }
   }, [placeId]);
 
