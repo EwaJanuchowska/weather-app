@@ -8,6 +8,7 @@ import WeatherSymbol from "../WeatherSymbol";
 import "./WeatherInfoTile.scss";
 
 const WeatherInfoTile = ({
+  className,
   weatherType,
   temperatureDay,
   temperatureNight,
@@ -16,7 +17,7 @@ const WeatherInfoTile = ({
   windSpeed,
   date
 }) => (
-  <Paper square elevation={2} className="WeatherInfoTile">
+  <Paper square elevation={2} className={`WeatherInfoTile ${className}`}>
     {date && (
       <div className="date-time">
         <div>{formatUnixDate(date, "iii")}</div>

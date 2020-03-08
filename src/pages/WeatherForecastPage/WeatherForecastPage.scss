@@ -3,4 +3,16 @@
     display: flex;
     flex-wrap: wrap;
   }
+
+  .weather-info-tile {
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  .forecast-hourly-box {
+    margin-bottom: 30px;
+  }
 }

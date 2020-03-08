@@ -15,6 +15,7 @@ import Footer from "../../components/Footer";
 import MainContent from "../../components/MainContent";
 import ErrorBox from "../../components/ErrorBox";
 import Breadcrumbs from "../../components/Breadcrumbs";
+import ForecastHourly from "../../components/ForecastHourly";
 
 import "./WeatherForecastPage.scss";
 
@@ -105,7 +106,8 @@ const WeatherForecastPage = () => {
                 fontFamily="h6.fontFamily"
                 lineHeight={2}
               >
-                Aktualna prognoza: <Typography color="primary">{region}</Typography>
+                Aktualna prognoza:{" "}
+                <Typography color="primary">{region}</Typography>
               </Box>
 
               <Box display="flex" justifyContent="center">
@@ -117,6 +119,10 @@ const WeatherForecastPage = () => {
                   windSpeed={forecastData.currently.windSpeed}
                 />
               </Box>
+            </Grid>
+
+            <Grid item xs={12} className="forecast-hourly-box">
+              <ForecastHourly data={forecastData.hourly.data} />
             </Grid>
 
             <Grid item xs={12}>
@@ -132,6 +138,7 @@ const WeatherForecastPage = () => {
               <Box className="forecast-tiles">
                 {forecastData.daily.data.map((item, index) => (
                   <WeatherInfoTile
+                    className="weather-info-tile"
                     key={index}
                     weatherType={item.icon}
                     temperatureDay={item.temperatureHigh}
