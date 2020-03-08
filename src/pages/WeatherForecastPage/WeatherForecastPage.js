@@ -18,11 +18,33 @@ import Breadcrumbs from "../../components/Breadcrumbs";
 
 import "./WeatherForecastPage.scss";
 
+let geocoderService = null;
+
 const WeatherForecastPage = () => {
-  const { latitude, longitude } = useParams();
+  const { latitude, longitude, placeId } = useParams();
   const [forecastData, setForecastData] = useState(null);
+  const [region, setRegion] = useState("");
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (!geocoderService && window.google) {
+      geocoderService = new window.google.maps.Geocoder();
+
+      if (geocoderService) {
+        geocoderService.geocode(
+          {
+            placeId
+          },
+          (responses, status) => {
+            if (status === "OK") {
+              setRegion(responses[0].formatted_address);
+            }
+          }
+        );
+      }
+    }
+  }, [placeId]);
 
   useEffect(() => {
     fetch(`/${process.env.REACT_APP_DARKSKY_KEY}/${latitude},${longitude}`)
@@ -83,7 +105,7 @@ const WeatherForecastPage = () => {
                 fontFamily="h6.fontFamily"
                 lineHeight={2}
               >
-                Aktualna prognoza
+                Aktualna prognoza: {region}
               </Box>
 
               <Box display="flex" justifyContent="center">

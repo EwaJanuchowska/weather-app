@@ -45,7 +45,7 @@ const SearchCityPage = () => {
                           const lat = responses[0].geometry.location.lat();
                           const lng = responses[0].geometry.location.lng();
 
-                          history.push(`/weather-forecast/${lat}/${lng}`);
+                          history.push(`/weather-forecast/${value.place_id}/${lat}/${lng}`);
                         }
                       }
                     );
