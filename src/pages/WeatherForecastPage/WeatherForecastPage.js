@@ -105,7 +105,7 @@ const WeatherForecastPage = () => {
                 fontFamily="h6.fontFamily"
                 lineHeight={2}
               >
-                Aktualna prognoza: {region}
+                Aktualna prognoza: <Typography color="primary">{region}</Typography>
               </Box>
 
               <Box display="flex" justifyContent="center">

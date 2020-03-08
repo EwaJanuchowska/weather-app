@@ -2,6 +2,7 @@ import React, { useMemo } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { useMediaQuery, CssBaseline } from "@material-ui/core";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import { pink } from "@material-ui/core/colors";
 import SearchCityPage from "./pages/SearchCityPage";
 import WeatherForecastPage from "./pages/WeatherForecastPage";
 import NotFoundPage from "./pages/NotFoundPage";
@@ -12,6 +13,7 @@ const App = () => {
     () =>
       createMuiTheme({
         palette: {
+          primary: pink,
           type: prefersDarkMode ? "dark" : "light"
         }
       }),
