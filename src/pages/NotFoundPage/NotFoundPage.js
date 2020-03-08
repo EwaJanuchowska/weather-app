@@ -10,11 +10,11 @@ const NotFoundPage = () => (
     <Header />
 
     <MainContent center>
-      <Typography variant="h1" component="h2" gutterBottom>
-        404 - not found
+      <Typography variant="h2" component="h2" gutterBottom>
+        404 - strona nie istnieje
       </Typography>
       <Link to="/" component={RouterLink}>
-        Go to main page
+        Powrót na stronę główną
       </Link>
     </MainContent>
 

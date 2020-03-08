@@ -8,9 +8,7 @@ const Header = () => (
   <AppBar className="Header" position="static">
     <Toolbar>
       <WbSunny className="main-icon" />
-      <Typography variant="h5">
-        Weather app
-      </Typography>
+      <Typography variant="h5">Weather app</Typography>
     </Toolbar>
   </AppBar>
 );

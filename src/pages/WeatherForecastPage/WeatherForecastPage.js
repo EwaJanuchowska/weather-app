@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { Grid, Container, Box, CircularProgress } from "@material-ui/core";
-import { useParams } from "react-router-dom";
+import {
+  Grid,
+  Container,
+  Box,
+  CircularProgress,
+  Link,
+  Typography
+} from "@material-ui/core";
+import { useParams, Link as RouterLink } from "react-router-dom";
 import WeatherInfoTile from "../../components/WeatherInfoTile";
 import CurrentWeatherInfoTile from "../../components/CurrentWeatherInfoTile";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import MainContent from "../../components/MainContent";
 import ErrorBox from "../../components/ErrorBox";
+import Breadcrumbs from "../../components/Breadcrumbs";
 
 import "./WeatherForecastPage.scss";
 
@@ -59,6 +67,13 @@ const WeatherForecastPage = () => {
       <Header />
 
       <MainContent className="WeatherForecastPage">
+        <Breadcrumbs aria-label="nawigacja">
+          <Link component={RouterLink} to="/">
+            Strona główna
+          </Link>
+          <Typography color="textPrimary">Prognoza - dni</Typography>
+        </Breadcrumbs>
+
         <Container>
           <Grid container>
             <Grid item xs={12}>
@@ -68,7 +83,7 @@ const WeatherForecastPage = () => {
                 fontFamily="h6.fontFamily"
                 lineHeight={2}
               >
-                Forecast - current
+                Aktualna prognoza
               </Box>
 
               <Box display="flex" justifyContent="center">
@@ -89,7 +104,7 @@ const WeatherForecastPage = () => {
                 fontFamily="h6.fontFamily"
                 lineHeight={2}
               >
-                Forecast for the next few days
+                Prognoza na najbliższe dni
               </Box>
 
               <Box className="forecast-tiles">

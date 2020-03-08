@@ -67,7 +67,7 @@ const LocationSelect = ({ onChange }) => {
       renderInput={params => (
         <TextField
           {...params}
-          label="Enter city/region"
+          label="miasto/region"
           variant="outlined"
           fullWidth
           onChange={handleChange}

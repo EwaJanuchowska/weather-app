@@ -30,7 +30,7 @@ const SearchCityPage = () => {
                 fontFamily="h6.fontFamily"
                 lineHeight={2}
               >
-                Search for your city/region to check the weather
+                Wpisz nazwę miasta/regionu
               </Box>
 
               <LocationSelect
