@@ -28,6 +28,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={SearchCityPage} />
           <Route
+            exact
             path="/weather-forecast/:placeId/:latitude/:longitude"
             component={WeatherForecastPage}
           />

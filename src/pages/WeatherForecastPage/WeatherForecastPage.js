@@ -28,6 +28,7 @@ const WeatherForecastPage = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
+  // do odczytania informacji o aktualnie szukanym regionie (tekst)
   useEffect(() => {
     if (!geocoderService && window.google) {
       geocoderService = new window.google.maps.Geocoder();
@@ -47,6 +48,7 @@ const WeatherForecastPage = () => {
     }
   }, [placeId]);
 
+  // do odczytania informacji o pogodzie - API
   useEffect(() => {
     fetch(`/${process.env.REACT_APP_DARKSKY_KEY}/${latitude},${longitude}`)
       .then(response => {
@@ -61,6 +63,7 @@ const WeatherForecastPage = () => {
       .finally(() => setIsLoading(false));
   }, [latitude, longitude]);
 
+  // wyświetlenie spinner
   if (isLoading) {
     return (
       <>
@@ -73,6 +76,7 @@ const WeatherForecastPage = () => {
     );
   }
 
+  // jeśli API pogody zwróci błąd
   if (error) {
     return (
       <>
@@ -85,6 +89,7 @@ const WeatherForecastPage = () => {
     );
   }
 
+  // forecastData - ta "stała" zawiera info z API o pogodzie
   return (
     <>
       <Header />

@@ -27,7 +27,7 @@ const WeatherSymbol = ({ type, className }) => {
     <Emoji
       className={`WeatherSymbol ${className}`}
       symbol={symbolsMap[type]}
-      label={symbolsMap[type] ? Object.keys(symbolsMap[type]) : ""}
+      label={type}
     />
   );
 };
